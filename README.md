@@ -1,6 +1,6 @@
 # Memoant
 
-A note taking app in Svelte forked from "voice notes".
+A note taking app in Svelte forked from "voice notes" and Markdown Editor https://svelte.dev/repl/98a473d8e5ec46bca9db12b22b591902?version=3.19.2
 
 
 ## Get started
