@@ -1,4 +1,5 @@
 <script>
+  import marked from 'marked';
   import { createEventDispatcher } from "svelte";
   const dispatch = createEventDispatcher();
   export let note = "";
@@ -102,7 +103,7 @@
     <div class="close" on:click={closeHandler} />
   </div>
   <div class="content-section">
-    <div>{note.content}</div>
+    <div>{@html marked(note.content)}</div>
   </div>
   <div class="footer-section" on:click={listenHandler}>
     <small>Listen</small>

@@ -1,10 +1,14 @@
 <script>
+  // Import markdown conversion library
+  import marked from 'marked';
+  marked.setOptions({breaks: true});
+
   import StickyNote from "../StickyNote/StickyNote.svelte";
   import Recorder from "../Recorder/Recorder.svelte";
   let support = true;
   let recordingText = `Press the Record button to Start recording.`;
   
-  let noteContent = "";
+  export let noteContent = "";
 
   try {
     let SpeechRecognition =
@@ -207,6 +211,7 @@
       placeholder="Create a new note by typing or using voice recognition."
       rows="6" />
   </div>
+  <div class="preview">{@html marked(noteContent)}</div>
 
   <!--Instruction Box to the user-->
   <p class="instructions">{recordingText}</p>
