@@ -1,6 +1,5 @@
 <script>
   import VoiceRecogination from "./Components/VoiceRecogination/VoiceRecogination.svelte";
-  console.clear();
 </script>
 
 <style>
@@ -22,7 +21,7 @@
 </style>
 
 <main>
-  <header>Voice Notes</header>
+  <header>Memoant</header>
   <div class="container">
     <div class="recording__box">
       <VoiceRecogination />

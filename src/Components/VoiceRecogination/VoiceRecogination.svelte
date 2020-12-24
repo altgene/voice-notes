@@ -3,7 +3,9 @@
   import Recorder from "../Recorder/Recorder.svelte";
   let support = true;
   let recordingText = `Press the Record button to Start recording.`;
+  
   let noteContent = "";
+
   try {
     let SpeechRecognition =
       window.SpeechRecognition || window.webkitSpeechRecognition;
