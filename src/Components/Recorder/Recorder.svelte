@@ -3,18 +3,15 @@
   const dispatch = createEventDispatcher();
 
   let isActive = false;
-  function playHandler() {
-    isActive = !isActive;
-  }
 
   function iconHandler(type) {
-    if (type === "PLAY" || type === "PAUSE") {
+    if (type === "RECORD" || type === "PAUSE") {
       isActive = !isActive;
     }
     let actionType =
-      type === "PLAY" && isActive
-        ? "PLAY"
-        : type === "PLAY" && !isActive
+      type === "RECORD" && isActive
+        ? "RECORD"
+        : type === "RECORD" && !isActive
         ? "PAUSE"
         : type;
     console.log(actionType);
@@ -196,9 +193,9 @@
         <i class="fas fa-undo fontIcons" />
         <small>Reset</small>
       </div>
-      <div class="icon__wrapper" on:click={() => iconHandler('PLAY')}>
-        <i class="fas fontIcons {isActive ? 'fa-pause' : 'fa-play'}" />
-        <small>{isActive ? 'Pause' : 'Play'}</small>
+      <div class="icon__wrapper" on:click={() => iconHandler('RECORD')}>
+        <i class="fas fontIcons {isActive ? 'fa-pause' : 'fa-microphone-alt'}" />
+        <small>{isActive ? 'Pause' : 'Record'}</small>
       </div>
       <div
         class="icon__wrapper {isActive ? 'none' : ''}"

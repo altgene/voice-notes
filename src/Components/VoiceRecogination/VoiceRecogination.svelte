@@ -2,7 +2,7 @@
   import StickyNote from "../StickyNote/StickyNote.svelte";
   import Recorder from "../Recorder/Recorder.svelte";
   let support = true;
-  let recordingText = `Press the Play button to Start recording.`;
+  let recordingText = `Press the Record button to Start recording.`;
   let noteContent = "";
   try {
     let SpeechRecognition =
@@ -18,7 +18,7 @@
 
   /** Voice API Logic Start**/
   recognition.continuous = true;
-  recognition.onresult = function(event) {
+  recognition.onresult = function (event) {
     let current = event.resultIndex;
     let transcript = event.results[current][0].transcript;
     console.log(transcript);
@@ -65,6 +65,7 @@
         });
       }
     }
+    notes.sort(function(a, b) { return b.date.localeCompare(a.date); });
     return notes;
   }
   function deleteNote(event) {
@@ -75,7 +76,7 @@
   /** Component Handlers**/
   function recorderHandler(event) {
     let type = event.detail.actionType;
-    if (type === "PLAY") {
+    if (type === "RECORD") {
       startHandler();
     } else if (type === "PAUSE") {
       pauseHandler();
@@ -100,7 +101,7 @@
     noteContent = "";
     recordingText = "Note reset successfully.";
     window.setTimeout(() => {
-      recordingText = `Press the Play button to Start recording.`;
+      recordingText = `Press the RECORD button to Start recording.`;
     }, 5000);
   }
   function saveHandler() {
@@ -115,8 +116,8 @@
       notes = getAllNotes();
       recordingText = "Note saved successfully.";
       window.setTimeout(() => {
-        recordingText = `Press the Play button to Start recording.`;
-    }, 5000);
+        recordingText = `Press the Record button to Start recording.`;
+      }, 5000);
     }
   }
   function readOutLoudHandler(event) {
